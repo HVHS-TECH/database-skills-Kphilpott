@@ -7,15 +7,18 @@
 // Input:  n/a
 // Return: n/a
 /**************************************************************/
-  const firebaseConfig = {
-    apiKey: ,
-    authDomain: ,
-    databaseURL: ,
-    projectId: ,
-    storageBucket: ,
-    messagingSenderId:,
-    appId:
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD4zRYZ8D9Exhm4XOr6whJf88DsIa0bu3k",
+  authDomain: "kees-philpott-12comp.firebaseapp.com",
+  databaseURL: "https://kees-philpott-12comp-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "kees-philpott-12comp",
+  storageBucket: "kees-philpott-12comp.firebasestorage.app",
+  messagingSenderId: "269860776866",
+  appId: "1:269860776866:web:0243dd5ab3dfe4062020fb",
+  measurementId: "G-3SZ6X8X9P3"
+};
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
