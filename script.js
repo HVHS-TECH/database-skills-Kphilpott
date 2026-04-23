@@ -25,3 +25,12 @@ function helloWorld(){
     }
   )
 }
+
+function Goodbye(){
+  console.log("Running helloWorld()")
+  firebase.database().ref('/').set(
+    {
+      message: 'Goodbye'
+    }
+  )
+}
