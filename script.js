@@ -26,7 +26,7 @@ function helloWorld(){
   )
 }
 
-function Goodbye(){
+function goodbyeWorld(){
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
     {
