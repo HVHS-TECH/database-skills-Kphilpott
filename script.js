@@ -17,7 +17,7 @@ const HTML_OUTPUT = document.getElementById("databaseOutput");
 // The ref('/') part tells the operation to write to the base level of the database "/"
 // This means it replaces the whole database with message:Hello World
 /**************************************************************/
-function helloWorld(){
+function helloWorld() {
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
     {
@@ -26,11 +26,23 @@ function helloWorld(){
   )
 }
 
-function goodbyeWorld(){
-  console.log("Running helloWorld()")
+function goodbyeWorld() {
+  console.log("Running goodbyeWorld()")
   firebase.database().ref('/').set(
     {
       message: 'Goodbye'
     }
   )
+}
+
+
+function readMessage() {
+  console.log ("Reading message...");
+  firebase.database().ref('/').child('message').once('value', display);
+console.log("leaving simpleRead...")
+}
+
+function display(snapshot) {
+console.log("running display()... the message is:" + snapshot.val());
+HTML_OUTPUT.innerHTML = snapshot.val();
 }
