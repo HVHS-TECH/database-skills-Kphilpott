@@ -17,6 +17,16 @@ const HTML_OUTPUT = document.getElementById("databaseOutput");
 // The ref('/') part tells the operation to write to the base level of the database "/"
 // This means it replaces the whole database with message:Hello World
 /**************************************************************/
+
+///fun startup segment :)
+console.log("Database online. Initiating Program...");
+console.log("Done");
+console.log("Program Online. Current Version: 0.1.");
+console.log("Have Fun");
+
+
+
+///Read and Write tests
 function helloWorld() {
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
@@ -35,14 +45,30 @@ function goodbyeWorld() {
   )
 }
 
-///send a request for the data from firebase, and send the message to the display function
-function readMessage() {
-  console.log ("Reading message...");
-  firebase.database().ref('/').child('message').once('value', display);
-console.log("leaving simpleRead...")
-}
+
+
+
 ///display the databases value for "message"
 function display(snapshot) {
 console.log("running display()... the message is: " + snapshot.val() + "!");
 HTML_OUTPUT.innerHTML = snapshot.val();
 }
+
+
+
+
+///Display Functions
+///Listen for when a value in the database changes and activate the request function
+function fb_readListener() {
+  console.log("Read Listener");
+  firebase.database().ref('/message').on('value', fb_logDatabaseRead);
+}
+
+///send a request for the data from firebase, and send the message to the display function
+function fb_logDatabaseRead() {
+  console.log ("Reading message...");
+  firebase.database().ref('/').child('message').once('value', display);
+console.log("leaving on Read...")
+}
+
+                  ////Worked first try, yippee!
