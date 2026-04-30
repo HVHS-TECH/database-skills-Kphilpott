@@ -7,6 +7,7 @@
  **************************************************************/
 
 const HTML_OUTPUT = document.getElementById("databaseOutput");
+const listenButton = document.getElementById("listenButton");
 
 /**************************************************************/
 // helloWorld()
@@ -21,7 +22,7 @@ const HTML_OUTPUT = document.getElementById("databaseOutput");
 ///fun startup segment :)
 console.log("Database online. Initiating Program...");
 console.log("Done");
-console.log("Program Online. Current Version: 0.1.");
+console.log("Program Online. Current Version: 0.1.1.");
 console.log("Have Fun");
 
 
@@ -62,6 +63,7 @@ HTML_OUTPUT.innerHTML = snapshot.val();
 function fb_readListener() {
   console.log("Read Listener");
   firebase.database().ref('/message').on('value', fb_logDatabaseRead);
+  listenButton.remove();
 }
 
 ///send a request for the data from firebase, and send the message to the display function
