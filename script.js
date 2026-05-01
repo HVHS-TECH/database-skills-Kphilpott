@@ -8,6 +8,8 @@
 
 const HTML_OUTPUT = document.getElementById("databaseOutput");
 const listenButton = document.getElementById("listenButton");
+var stopListen = false;
+
 
 /**************************************************************/
 // helloWorld()
@@ -59,7 +61,9 @@ console.log("running display()... the message is: " + snapshot.val() + "!");
 HTML_OUTPUT.innerHTML = snapshot.val();
 }
 
-
+function stopListen() {
+  ref.off();
+}
 
 
 ///Display Functions
