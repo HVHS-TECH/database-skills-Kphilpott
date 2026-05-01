@@ -22,7 +22,7 @@ const listenButton = document.getElementById("listenButton");
 ///fun startup segment :)
 console.log("Database online. Initiating Program...");
 console.log("Done");
-console.log("Program Online. Current Version: 0.1.1.");
+console.log("Program Online. Current Version: 0.1.2");
 console.log("Have Fun");
 
 
@@ -32,7 +32,9 @@ function helloWorld() {
   console.log("Running helloWorld()")
   firebase.database().ref('/').set(
     {
-      message: 'Hello World'
+      testing: {
+        message: 'Hello World',
+      }
     }
   )
 }
@@ -41,7 +43,9 @@ function goodbyeWorld() {
   console.log("Running goodbyeWorld()")
   firebase.database().ref('/').set(
     {
-      message: 'Goodbye'
+      testing: {
+        message: 'Goodbye',
+      }
     }
   )
 }
@@ -62,14 +66,14 @@ HTML_OUTPUT.innerHTML = snapshot.val();
 ///Listen for when a value in the database changes and activate the request function
 function fb_readListener() {
   console.log("Read Listener");
-  firebase.database().ref('/message').on('value', fb_logDatabaseRead);
+  firebase.database().ref('/testing/message').on('value', fb_logDatabaseRead);
   listenButton.remove();
 }
 
 ///send a request for the data from firebase, and send the message to the display function
 function fb_logDatabaseRead() {
   console.log ("Reading message...");
-  firebase.database().ref('/').child('message').once('value', display);
+  firebase.database().ref('/testing').child('message').once('value', display);
 console.log("leaving on Read...")
 }
 
