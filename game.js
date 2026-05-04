@@ -146,3 +146,20 @@ return;
 
 
 /// WORK ALREADY
+
+
+
+
+
+///firebase:
+///Read and Write tests
+function recordScore() {
+  console.log("Running recordScore()")
+  firebase.database().ref('/').update(
+    {
+      score: {
+        message: + score,
+      }
+    }
+  )
+}
