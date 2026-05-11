@@ -8,9 +8,22 @@
 
 const HTML_OUTPUT = document.getElementById("databaseOutput");
 const listenButton = document.getElementById("listenButton");
-const inputField = document.getElementById('userText');
-const output = document.getElementById('output');
-const button = document.getElementById('getValueBtn');
+let scores = {
+  game1: {
+       users: {
+        bob: 9,
+        greg: 6,
+        britton: 1,
+       }
+  },
+  game2: {
+    users: {
+        bob: 4,
+        greg: 16,
+        britton: 0,
+       }
+  }
+};
 
 /**************************************************************/
 // helloWorld()
@@ -33,22 +46,18 @@ console.log("Have Fun");
 ///Read and Write tests
 function helloWorld() {
   console.log("Running helloWorld()")
-  firebase.database().ref('/').update(
+  firebase.database().ref('/testing').update(
     {
-      testing: {
         message: 'Hello World',
-      }
     }
   )
 }
 
 function goodbyeWorld() {
   console.log("Running goodbyeWorld()")
-  firebase.database().ref('/').update(
+  firebase.database().ref('/testing').update(
     {
-      testing: {
         message: 'Goodbye',
-      }
     }
   )
 }
@@ -82,4 +91,9 @@ console.log("leaving on Read...")
                   ////Worked first try, yippee!
 
 
+
+
+function scoresystem() {
+
+}
 
