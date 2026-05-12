@@ -69,6 +69,7 @@ function goodbyeWorld() {
 function display(snapshot) {
 console.log("running display()... the message is: " + snapshot.val() + "!");
 HTML_OUTPUT.innerHTML = snapshot.val();
+console.log(snapshot.val());
 }
 
 
@@ -77,7 +78,7 @@ HTML_OUTPUT.innerHTML = snapshot.val();
 ///Listen for when a value in the database changes and activate the request function
 function fb_readListener() {
   console.log("Read Listener");
-  firebase.database().ref('/testing/message').on('value', fb_logDatabaseRead);
+  firebase.database().ref('/').on('value', fb_logDatabaseRead);
   listenButton.style.display = "none";
 }
 
@@ -88,12 +89,21 @@ function fb_logDatabaseRead() {
 console.log("leaving on Read...")
 }
 
-                  ////Worked first try, yippee!
+                  ////The code above worked first try, yippee!
 
 
 
 
 function scoresystem() {
 
+  
+
+
+
 }
 
+function fb_logDatabaseScores() {
+  console.log ("Reading message...");
+  firebase.database().ref('/').child('scores').once('value', display);
+console.log("leaving on Read...")
+}
