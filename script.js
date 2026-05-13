@@ -63,10 +63,11 @@ function goodbyeWorld() {
 }
 
 
-
+var dbdata;
 
 ///display the databases value for "message"
 function display(snapshot) {
+  dbdata = snapshot.val()
 console.log("running display()... the message is: " + snapshot.val() + "!");
 HTML_OUTPUT.innerHTML = snapshot.val();
 console.log(snapshot.val());
@@ -93,9 +94,13 @@ console.log("leaving on Read...")
 
 
 
-
+let HighScores = Object.keys(scores);
 function scoresystem() {
 
+  for (i = 0; - i < scores.length; i++) {
+   let key = scores[i];
+   console.log("Scores are: " +i+ " for " +key+ ". " + HighScores[key] + " points.");
+};
   
 
 
@@ -107,3 +112,12 @@ function fb_logDatabaseScores() {
   firebase.database().ref('/').child('scores').once('value', display);
 console.log("leaving on Read...")
 }
+
+
+
+
+
+//{user1: 4, user2: 568, user3: 57575757554554}user1: 4user2: 568user3: 57575757554554[[Prototype]]: Object
+//console.log(dbdata["user2"])
+//HTML_OUTPUT.innerHTML = dbdata["user2"]
+//568
