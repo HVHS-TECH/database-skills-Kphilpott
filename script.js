@@ -8,20 +8,20 @@
 
 const HTML_OUTPUT = document.getElementById("databaseOutput");
 const listenButton = document.getElementById("listenButton");
-let scores = {
+let nscores = {
   game1: {
-       users: {
-        bob: 9,
-        greg: 6,
-        britton: 1,
-       }
+    users: {
+      bob: 9,
+      greg: 6,
+      britton: 1,
+    }
   },
   game2: {
     users: {
-        bob: 4,
-        greg: 16,
-        britton: 0,
-       }
+      bob: 4,
+      greg: 16,
+      britton: 0,
+    }
   }
 };
 
@@ -48,7 +48,7 @@ function helloWorld() {
   console.log("Running helloWorld()")
   firebase.database().ref('/testing').update(
     {
-        message: 'Hello World',
+      message: 'Hello World',
     }
   )
 }
@@ -57,7 +57,7 @@ function goodbyeWorld() {
   console.log("Running goodbyeWorld()")
   firebase.database().ref('/testing').update(
     {
-        message: 'Goodbye',
+      message: 'Goodbye',
     }
   )
 }
@@ -68,9 +68,9 @@ var dbdata;
 ///display the databases value for "message"
 function display(snapshot) {
   dbdata = snapshot.val()
-console.log("running display()... the message is: " + snapshot.val() + "!");
-HTML_OUTPUT.innerHTML = snapshot.val();
-console.log(snapshot.val());
+  console.log("running display()... the message is: " + snapshot.val() + "!");
+  HTML_OUTPUT.innerHTML = snapshot.val();
+  console.log(snapshot.val());
 }
 
 
@@ -85,32 +85,46 @@ function fb_readListener() {
 
 ///send a request for the data from firebase, and send the message to the display function
 function fb_logDatabaseRead() {
-  console.log ("Reading message...");
+  console.log("Reading message...");
   firebase.database().ref('/testing').child('message').once('value', display);
-console.log("leaving on Read...")
+  console.log("leaving on Read...")
 }
 
-                  ////The code above worked first try, yippee!
+////The code above worked first try, yippee!
+
+//                pain.
 
 
 
-let HighScores = Object.keys(scores);
 function scoresystem() {
+  /*
+let HighScores = Object.keys(scores);
 
   for (i = 0; - i < scores.length; i++) {
-   let key = scores[i];
-   console.log("Scores are: " +i+ " for " +key+ ". " + HighScores[key] + " points.");
-};
-  
-
-
+    let key = scores[i];
+    console.log("Scores are: " + i + " for " + key + ". " + HighScores[key] + " points.");
+  };
+*/
+console.log("Reading High Scores");
+firebase.database().ref('/scores')
+   .once('value', fb_displayHighScores);
 
 }
 
+function fb_displayHighScores(snapshot) {
+  snapshot.forEach (fb_showOneScore);
+}
+
+function fb_showOneScore(child) {
+  console.log(child.key+ ": " + child.val());
+  
+}
+
+
 function fb_logDatabaseScores() {
-  console.log ("Reading message...");
+  console.log("Reading message...");
   firebase.database().ref('/').child('scores').once('value', display);
-console.log("leaving on Read...")
+  console.log("leaving on Read...")
 }
 
 
