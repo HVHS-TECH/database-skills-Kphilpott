@@ -38,7 +38,7 @@ let nscores = {
 ///fun startup segment :)
 console.log("Database online. Initiating Program...");
 console.log("Done");
-console.log("Program Online. Current Version: exp1.2");
+console.log("Program Online. Current Version: exp1.3");
 console.log("Have Fun");
 
 
@@ -111,13 +111,18 @@ firebase.database().ref('/scores')
 
 }
 
+
 function fb_displayHighScores(snapshot) {
   snapshot.forEach (fb_showOneScore);
 }
 
+
+
 function fb_showOneScore(child) {
   console.log(child.key+ ": " + child.val());
+  HTML_OUTPUT.innerHTML += child.key+ ": " + child.val() + "<br>"
 }
+
 
 
 function fb_logDatabaseScores() {
