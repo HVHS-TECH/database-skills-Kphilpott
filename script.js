@@ -38,7 +38,7 @@ let nscores = {
 ///fun startup segment :)
 console.log("Database online. Initiating Program...");
 console.log("Done");
-console.log("Program Online. Current Version: 0.1.3");
+console.log("Program Online. Current Version: exp1.2");
 console.log("Have Fun");
 
 
