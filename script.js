@@ -131,9 +131,32 @@ function fb_logDatabaseScores() {
   console.log("leaving on Read...")
 }
 
+var GLOBAL_user;
+
+function fb_popuplogin() {
+  var provider = new firebase.auth.GoogleAuthProvider();
+
+  firebase.auth().signInWithPopup(Provider).then((result) => {
+    GLOBAL_user = result.user; //save the user details as global value
+    console.log("User has logged in.");
+  });
+}
 
 
+function fb_login() {
+  firebase.auth().onAuthStateChanged(LOGIN_CALLBACK);
+}
 
+function fb_handleLogin(_user) {
+  if (_user) {
+    console.log("User is logged in.");
+    GLOBAL_user = _user; //save the user details as global value
+
+  } else {
+    console.log("User is NOT logged in, starting the popup process.");
+    fb_popuplogin();
+  }
+}
 
 //{user1: 4, user2: 568, user3: 57575757554554}user1: 4user2: 568user3: 57575757554554[[Prototype]]: Object
 //console.log(dbdata["user2"])
